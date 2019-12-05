@@ -10,7 +10,7 @@ def generate_random_data_sample(sample_size, feature_dim, num_classes):
     Y = np.random.randint(size=(sample_size, 1), low=0, high=num_classes)
 
     # Make sure that the data is separable
-    X = (np.random.randn(sample_size, feature_dim)+3) * (Y + 1)
+    X = (np.random.randn(sample_size, feature_dim) * 0.3+ 3) * (Y + 0.5)
 
     # Specify the data type to match the input variable used later in the tutorial
     # (default type is double)
@@ -38,7 +38,7 @@ a = 0.5
 x_dim = 2
 sample_dim = 20000
 out_dim = 2
-minibatch_size = 10
+minibatch_size = 200
 
 i, o = generate_random_data_sample(sample_dim, x_dim, out_dim)
 
