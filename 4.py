@@ -20,10 +20,20 @@ ax.set_ylabel('Test score', size=10)
 t0 = np.linspace(0,100,101)
 t1 = np.linspace(0,100,101)
 
-g0, g1 = np.meshgrid(t0, t1)
-activation = w[0] * g0 + w[1] * g1 + w[2]
+g = np.meshgrid(t0, t1)
+# print(g)
+g0, g1 = g
+# print(g0, "\n*****\n", g1)
+# e0, e1 = [(i, j) for i, j in zip(g0, g1)]
+activation = np.array([np.matmul(np.array([e0, e1, 1]), w) for ea0, ea1 in zip(g0, g1) for e0, e1 in zip(ea0, ea1)])
+#ここ
+print(activation)
+# activation = w[0] * g0 + w[1] * g1 + w[2]
+# activation = np.matmul(p, w)
+
 g2 = sigmoid(activation)
 
+print(g2)
 # Plot the surface.
 surf = ax.plot_surface(g0, g1, g2, cmap=cm.coolwarm_r, linewidth=0, antialiased=False)
 
